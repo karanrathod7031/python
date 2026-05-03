@@ -164,8 +164,7 @@ def create_app() -> FastAPI:
     app.include_router(settings.router)
 
     # WebSocket
-    app.add_api_route("/ws", websocket_endpoint, methods=["GET"])
-    app.add_websocket_route("/ws", websocket_endpoint)
+    app.add_api_websocket_route("/ws", websocket_endpoint)
 
     @app.get("/")
     async def root() -> dict[str, str]:

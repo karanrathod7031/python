@@ -18,9 +18,9 @@ class AuthManager:
 
     def __init__(self) -> None:
         settings = get_settings()
+        self._secret_key = settings.secret_key
         self._admin_password_hash = self._hash(settings.admin_password)
         self._tokens: dict[str, datetime] = {}
-        self._secret_key = settings.secret_key
 
     def authenticate(self, password: str) -> Optional[str]:
         """Authenticate with password and return a session token."""
